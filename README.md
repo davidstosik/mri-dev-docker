@@ -9,14 +9,6 @@ git clone https://github.com/ruby/ruby.git
 
 ## Shell in Docker container
 
-In \*nix environments:
-
 ```sh
 ./start.sh
-```
-
-Else:
-
-```sh
-docker run -it --rm --mount src=mri_dev_vol,target=/mri_dev --mount src={current path}/ruby,target=/ruby,type=bind mri_dev
 ```
