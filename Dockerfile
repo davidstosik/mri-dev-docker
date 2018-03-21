@@ -10,7 +10,7 @@ RUN set -ex; \
       ruby
 
 ENV RUBY_SRC_DIR /ruby
-ENV WORKDIR /mri_dev
+ENV WORKDIR /workdir
 
 COPY ruby $RUBY_SRC_DIR
 
