@@ -13,11 +13,15 @@ ENV RUBY_SRC_DIR /ruby
 ENV WORKDIR /mri_dev
 
 COPY ruby $RUBY_SRC_DIR
+
+WORKDIR $WORKDIR
+RUN ln -s $RUBY_SRC_DIR
+
 WORKDIR $RUBY_SRC_DIR
 RUN autoconf
 
 WORKDIR $WORKDIR/build
-RUN $RUBY_SRC_DIR/configure --prefix=$WORKDIR/install --enable-shared
+RUN $WORKDIR/ruby/configure --prefix=$WORKDIR/install --enable-shared
 RUN make all -j
 RUN make install
 
