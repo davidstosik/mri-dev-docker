@@ -7,7 +7,7 @@ git clone https://github.com/ruby/ruby.git
 ./setup.sh
 ```
 
-## Shell in Docker container
+## Open console inside Docker container
 
 ```sh
 ./start.sh
