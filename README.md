@@ -4,8 +4,7 @@
 git clone https://github.com/davidstosik/mri-dev-docker.git
 cd mri-dev-docker
 git clone https://github.com/ruby/ruby.git
-docker volume create mri_dev_vol
-docker build -t mri_dev .
+./setup.sh
 ```
 
 ## Shell in Docker container
