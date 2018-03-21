@@ -11,14 +11,14 @@ RUN set -ex; \
 
 COPY ruby /ruby
 WORKDIR /ruby
-RUN ["autoconf"]
+RUN autoconf
 
 WORKDIR /mri_dev/build
-RUN ["/ruby/configure", "--prefix=/mri_dev/install", "--enable-shared"]
-RUN ["make", "all", "-j"]
-RUN ["make", "install"]
+RUN /ruby/configure --prefix=/mri_dev/install --enable-shared
+RUN make all -j
+RUN make install
 
-VOLUME ["/mri_dev"]
-VOLUME ["/ruby"]
+VOLUME /mri_dev
+VOLUME /ruby
 
-CMD ["bash"]
+CMD bash
