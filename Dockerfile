@@ -1,5 +1,9 @@
 FROM buildpack-deps:stretch
 
+ENV USERNAME rubydev
+ENV RUBY_SRC_DIR /ruby
+ENV WORKDIR /workdir
+
 RUN set -ex; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -9,15 +13,19 @@ RUN set -ex; \
       libjemalloc-dev \
       ruby
 
-ENV RUBY_SRC_DIR /ruby
-ENV WORKDIR /workdir
+RUN useradd $USERNAME
+
+RUN mkdir -p $WORKDIR/build
+RUN chown -R $USERNAME:$USERNAME $WORKDIR
 
 COPY ruby $RUBY_SRC_DIR
+RUN chown -R $USERNAME:$USERNAME $RUBY_SRC_DIR
 
-WORKDIR $WORKDIR
-RUN ln -s $RUBY_SRC_DIR
+USER $USERNAME
 
-WORKDIR $RUBY_SRC_DIR
+RUN ln -s $RUBY_SRC_DIR $WORKDIR
+
+WORKDIR $WORKDIR/ruby
 RUN autoconf
 
 WORKDIR $WORKDIR/build
