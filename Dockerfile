@@ -9,16 +9,19 @@ RUN set -ex; \
       libjemalloc-dev \
       ruby
 
-COPY ruby /ruby
-WORKDIR /ruby
+ENV RUBY_SRC_DIR /ruby
+ENV WORKDIR /mri_dev
+
+COPY ruby $RUBY_SRC_DIR
+WORKDIR $RUBY_SRC_DIR
 RUN autoconf
 
-WORKDIR /mri_dev/build
-RUN /ruby/configure --prefix=/mri_dev/install --enable-shared
+WORKDIR $WORKDIR/build
+RUN $RUBY_SRC_DIR/configure --prefix=$WORKDIR/install --enable-shared
 RUN make all -j
 RUN make install
 
-VOLUME /mri_dev
-VOLUME /ruby
+VOLUME $WORKDIR
+VOLUME $RUBY_SRC_DIR
 
 CMD bash
