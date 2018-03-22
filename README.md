@@ -82,6 +82,8 @@ make test-all
 make test-spec
 ```
 
+You can also run `/ruby/test.rb` using `miniruby` with `make run`.
+
 ### About volumes
 
 Note that `ruby/` is not mounted directly inside `/workdir` to allow Docker to
