@@ -1,5 +1,14 @@
 # Ruby Hacker Box
 
+## Purpose
+
+The _Ruby Hacker Box_ is meant to make it easy for new Ruby hackers to get
+started hacking Ruby very quickly.
+
+It was started at [@ko1](https://github.com/ko1)'s [Ruby Hack
+Challenge](https://github.com/ko1/rubyhackchallenge) and is based on the
+documentation that was written for those events.
+
 ## Requirements
 
 - [Docker](https://www.docker.com/)
